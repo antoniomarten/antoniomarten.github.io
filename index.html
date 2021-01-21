@@ -14,7 +14,6 @@
     
     <script type="text/processing">
 
-
 PGraphics pg;
 PImage img;
 
@@ -60,38 +59,13 @@ void draw(){
   
   
   
-  int tilesX = 16;
-  int tilesY = 16;
-
-  int tileW = int(pg.width/tilesX);
-  int tileH = int(pg.height/tilesY);
-
-  for (int y = 0; y < tilesY; y++) {
-    for (int x = 0; x < tilesX; x++) {
-
-      int wave = int(sin(frameCount * 0.05 + ( x * y ) * 0.07) * mouseX * 0.5);
-
-      int sx = x*tileW + wave;
-      int sy = y*tileH;
-      int sw = tileW;
-      int sh = tileH+mouseY;
-
-
-      int dx = x*tileW+157;
-      int dy = y*tileH+45;
-      int dw = tileW;
-      int dh = tileH;
-      
-      copy(img, sx, sy, sw, sh, dx, dy, dw, dh);
-
-    }
-  }
   
   
   
   
   imageMode(CENTER);
-  
+  image(pg,0,0);
+
   
   
   textAlign(LEFT);
@@ -107,6 +81,7 @@ void draw(){
   
   
 }
+
 
 
 
