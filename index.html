@@ -15,10 +15,13 @@
     <script type="text/processing">
 
 PGraphics pg;
+PImage img;
+
 
 void setup(){
   size(900,900);
   pg = createGraphics(586,810);
+  img = loadImage("https://raw.githubusercontent.com/antoniomarten/antoniomarten.github.io/main/a.jpg");
 }
 
 
@@ -29,7 +32,21 @@ void draw(){
   
   pg.beginDraw();
   pg.background(#f1f1f1);
-  pg.endDraw();
+ 
+ 
+  
+  
+  pg.push();
+
+  pg.translate(pg.width/2,pg.height/2);
+    img.resize(width+400,0);
+  pg.image(img,mouseX-400,mouseY-400);
+
+  pg.pop();
+  
+   pg.endDraw();
+   
+   
   imageMode(CENTER);
   image(pg,width/2,height/2);
   
@@ -44,6 +61,9 @@ void draw(){
 
   
 }
+  
+
+  
   
 
   
