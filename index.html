@@ -14,60 +14,145 @@
     
     <script type="text/processing">
     /* YOUR CODE */
- Ball[] ball;
-
-      void setup(){
-        size(700, 600);
-        frameRate(100);
-        ball = new Ball[100];
-        for(int i = 0; i < ball.length; i++){
-            ball[i] = new Ball();
-        }
-      }
+PGraphics pg;
+PImage img;
+PFont sans;
 
 
+int maxImages = 16; // Total # of images
+int imageIndex = 14; // Initial image to be displayed is the first
 
-      void draw(){
-          background(155,0,0);
-            for(int i = 0; i < ball.length; i++){
-                ball[i].display();
-            }
+// Declaring an array of images.
+PImage[] images = new PImage[maxImages]; 
 
-      }
-      class Ball{
 
-          float x;
-          float y;
-          float Vx;
-          float Vy;
-          float r,g,b,o;
-          float d;
 
-          Ball(){
-              x = random(width);
-              y = random(height);
-              Vx = random(-5,5);
-              Vy = random(-5,5);
-              r = random(255);
-              g = random(255);
-              b = random(255);
-              o = random(255);
-              d = random(30) + 15;
-          }
+void setup(){
+  size(900,900,P2D);
+  
+  pg = createGraphics(586,810);
 
-          void display(){
-              fill(r,g,b,o);
-              ellipse(x,y,d,d);
-              x += Vx;
-              y += Vy;
-              if(x > width || x < 0){
-                  Vx *= -1;
-              }
-              if(y > height || y < 0){
-                  Vy *= -1;
-              }
-          }
+  img = loadImage("a.jpg");
+  sans = createFont("sans.otf",1000);
+
+}
+ 
+  
+
+void draw(){
+  background(0);
+  
+  pg.beginDraw();
+  pg.background(#111111);
+  pg.imageMode(CENTER);
+  
+  
+  // Display image
+  pg.push();
+
+  pg.translate(pg.width/2,pg.height/2);
+  img.resize(pg.width+50,0);
+  pg.tint(255,220);
+
+  pg.image(img,0,0);
+  pg.noTint();
+  
+  pg.pop();
+  
+   // draw rectangle
+   //pg.fill(#A8D9DB);
+   //pg.noStroke();
+   //pg.rect(0,615, width, 277);
+
+  
+  // Definte text stle
+  pg.textFont(sans);
+  pg.textAlign(LEFT);
+  pg.textSize(174);
+  pg.textLeading(170);
+  pg.fill(#329EE8);
+
+
+  // display text 
+  pg.text("BRU\nTA\nLIS\nME",8,150);
+  //pg.text("L'ORDINATEUR",8,755);
+
+
+  pg.textSize(13);
+
+  pg.text("Le terme « brutalisme » vient du français « brut ». Le « beton",22,772);
+  pg.text("brut » est le terme employe par Le Corbusier, qui voit dans ce matériau de construction",22,788);
+
+  
+  pg.endDraw();
+  
+  
+  
+  int tilesX = 16;
+  int tilesY = 16;
+
+  int tileW = int(pg.width/tilesX);
+  int tileH = int(pg.height/tilesY);
+
+  for (int y = 0; y < tilesY; y++) {
+    for (int x = 0; x < tilesX; x++) {
+
+      // WARP
+      int wave = int(sin(frameCount * 0.05 + ( x * y ) * 0.07) * mouseX * 0.5);
+
+      // SOURCE
+      int sx = x*tileW + wave;
+      int sy = y*tileH;
+      int sw = tileW;
+      int sh = tileH+mouseY;
+
+
+      // DESTINATION
+      int dx = x*tileW+157;
+      int dy = y*tileH+45;
+      int dw = tileW;
+      int dh = tileH;
+      
+      copy(img, sx, sy, sw, sh, dx, dy, dw, dh);
+
     }
+  }
+  
+  
+  
+  
+  imageMode(CENTER);
+  //image(pg,width/2,height/2);
+  
+   
+  noStroke();
+  fill(#FFE400);
+  push();
+  translate(mouseX, mouseY);
+  ellipse(0, 0, 10, 10);
+  pop();
+  
+  
+  textFont(sans);
+  textAlign(LEFT);
+  textSize(174);
+  textLeading(170);
+  fill(#F8CDFF);
+
+
+  // display text 
+  text("BRU\nTA\nLIS\nME",170,200);
+  //pg.text("L'ORDINATEUR",8,755);
+
+
+
+  
+  
+  
+}
+
+
+
 
 
 
