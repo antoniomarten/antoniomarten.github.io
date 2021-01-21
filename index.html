@@ -13,18 +13,9 @@
     <p>these are some experiments on generative designs</p>
     
     <script type="text/processing">
-    /* YOUR CODE */
 PGraphics pg;
 PImage img;
 PFont sans;
-
-
-int maxImages = 16; // Total # of images
-int imageIndex = 14; // Initial image to be displayed is the first
-
-// Declaring an array of images.
-PImage[] images = new PImage[maxImages]; 
-
 
 
 void setup(){
@@ -33,7 +24,7 @@ void setup(){
   pg = createGraphics(586,810);
 
   img = loadImage("a.jpg");
-  sans = createFont("sans.otf",1000);
+  
 
 }
  
@@ -47,7 +38,6 @@ void draw(){
   pg.imageMode(CENTER);
   
   
-  // Display image
   pg.push();
 
   pg.translate(pg.width/2,pg.height/2);
@@ -59,23 +49,16 @@ void draw(){
   
   pg.pop();
   
-   // draw rectangle
-   //pg.fill(#A8D9DB);
-   //pg.noStroke();
-   //pg.rect(0,615, width, 277);
+  
 
   
-  // Definte text stle
-  pg.textFont(sans);
   pg.textAlign(LEFT);
   pg.textSize(174);
   pg.textLeading(170);
   pg.fill(#329EE8);
 
 
-  // display text 
   pg.text("BRU\nTA\nLIS\nME",8,150);
-  //pg.text("L'ORDINATEUR",8,755);
 
 
   pg.textSize(13);
@@ -97,17 +80,14 @@ void draw(){
   for (int y = 0; y < tilesY; y++) {
     for (int x = 0; x < tilesX; x++) {
 
-      // WARP
       int wave = int(sin(frameCount * 0.05 + ( x * y ) * 0.07) * mouseX * 0.5);
 
-      // SOURCE
       int sx = x*tileW + wave;
       int sy = y*tileH;
       int sw = tileW;
       int sh = tileH+mouseY;
 
 
-      // DESTINATION
       int dx = x*tileW+157;
       int dy = y*tileH+45;
       int dw = tileW;
@@ -122,27 +102,18 @@ void draw(){
   
   
   imageMode(CENTER);
-  //image(pg,width/2,height/2);
   
    
-  noStroke();
-  fill(#FFE400);
-  push();
-  translate(mouseX, mouseY);
-  ellipse(0, 0, 10, 10);
-  pop();
   
   
-  textFont(sans);
+  
   textAlign(LEFT);
   textSize(174);
   textLeading(170);
   fill(#F8CDFF);
 
 
-  // display text 
   text("BRU\nTA\nLIS\nME",170,200);
-  //pg.text("L'ORDINATEUR",8,755);
 
 
 
