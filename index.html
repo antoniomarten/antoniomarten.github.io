@@ -15,60 +15,26 @@
     <script type="text/processing">
 
 PGraphics pg;
-PImage img;
-
-
-
 
 void setup(){
-  size(900,900,P2D);
-  
+  size(900,900);
   pg = createGraphics(586,810);
-
-  img = loadImage("https://raw.githubusercontent.com/antoniomarten/antoniomarten.github.io/main/a.jpg");
-
 }
- 
-  
+
+
+
 
 void draw(){
   background(0);
   
   pg.beginDraw();
-  pg.background(#111111);
-  pg.imageMode(CENTER);
-  
-  
-  pg.push();
-
-  pg.translate(pg.width/2,pg.height/2);
-  img.resize(pg.width+50,0);
-  pg.tint(255,220);
-
-  pg.image(img,0,0);
-  pg.noTint();
-  
-  pg.pop();
-  
- 
-
-  
-
-
+  pg.background(#f1f1f1);
   pg.endDraw();
-  
-  
-  
-  
-  
-  
-  
   imageMode(CENTER);
-  image(pg,0,0);
-
+  image(pg,width/2,height/2);
   
   
-  textAlign(LEFT);
+   textAlign(LEFT);
   textSize(174);
   textLeading(170);
   fill(#F8CDFF);
@@ -76,11 +42,11 @@ void draw(){
 
   text("BRU\nTA\nLIS\nME",170,200);
 
-
- 
-  
   
 }
+  
+
+  
 
 
 
