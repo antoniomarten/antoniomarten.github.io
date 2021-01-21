@@ -13,15 +13,20 @@
     <p>these are some experiments on generative designs</p>
     
     <script type="text/processing">
+
+
 PGraphics pg;
 PImage img;
 
+
+
+
 void setup(){
   size(900,900,P2D);
- 
-  pg = createGraphics(586,810);
-  img = loadImage("/a.jpg");
   
+  pg = createGraphics(586,810);
+
+  img = loadImage("https://raw.githubusercontent.com/antoniomarten/antoniomarten.github.io/main/a.jpg");
 
 }
  
@@ -46,24 +51,11 @@ void draw(){
   
   pg.pop();
   
-  
+ 
 
   
-  pg.textAlign(LEFT);
-  pg.textSize(174);
-  pg.textLeading(170);
-  pg.fill(#329EE8);
 
 
-  pg.text("BRU\nTA\nLIS\nME",8,150);
-
-
-  pg.textSize(13);
-
-  pg.text("Le terme « brutalisme » vient du français « brut ». Le « beton",22,772);
-  pg.text("brut » est le terme employe par Le Corbusier, qui voit dans ce matériau de construction",22,788);
-
-  
   pg.endDraw();
   
   
@@ -100,8 +92,6 @@ void draw(){
   
   imageMode(CENTER);
   
-   
-  
   
   
   textAlign(LEFT);
@@ -113,13 +103,10 @@ void draw(){
   text("BRU\nTA\nLIS\nME",170,200);
 
 
-
-  
+ 
   
   
 }
-
-
 
 
 
